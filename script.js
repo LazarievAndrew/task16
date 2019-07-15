@@ -10,23 +10,15 @@ var arr2 = [0,0,1,1,1,1,0,1,1,1];
 
 function compressArray(x){
 
-    var a = [];
-    var count = 0;
+    var a = [1];
 
-    var b = x.reduce (function (some, item){
-        
-        if (some === item){
-            count++;
-            return some;
+    for ( var i = 1; i < x.length; i++){
+        if (x[i] === x[i-1]){
+            a[a.length - 1] += 1;
         } else {
-            a.push(count);
-            count = 1;
-            return item;
+            a.push(1);
         }
-
-    }, x[0]);
-
-    a.push(count);
+    }
 
     return a;
 }
